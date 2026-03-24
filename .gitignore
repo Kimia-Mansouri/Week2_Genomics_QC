@@ -58,3 +58,5 @@ rsconnect/
 .RData
 .gitignore
 *.Rproj
+*.fastq.gz
+*.fastqc

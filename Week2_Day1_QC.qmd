@@ -8,12 +8,41 @@ toc: true
 
 ```{r}
 #| eval: false 
-#| echo: false 
-library(Rqc) 
-library(fastqcr) 
-library(QuasR) 
-library(ShortRead) 
-library(ggplot2)
+library("Rqc") 
+library("fastqcr") 
+library("QuasR") 
+library("ShortRead") 
+library("ggplot2")
 library ("tidyverse")
 print("All Bioconductor packages loaded successfully!")
+```
+
+## Step 1: Visualizing Quality with Rqc
+
+```{r}
+#| eval: false 
+# Define the path to the directory containing the example fastq files
+fastq_dir <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
+
+# Run the QC analysis on ALL .fastq.gz files in that directory
+qc_result <- rqc(path = fastq_dir, pattern = ".fastq.gz", openBrowser=FALSE)
+```
+
+### **Average Read Quality: The Bird’s Eye View**
+
+```{r}
+#| eval: false 
+#| #Above 30 means a good quality so overall good. With the tail end dropping. 
+rqcReadQualityBoxPlot(qc_result) 
+```
+
+### Micro_Challenge 1**: The Bird’s Eye Audit**
+
+```{r}
+#| eval: false 
+p_avg <- rqcReadQualityBoxPlot (qc_result) + 
+  geom_hline (yintercept = 30, color = "green", linetype = "dashed")
+p_avg
+ggsave("average_quality.png", plot = p_avg)
+#Question: Is the median average quality of our library above the Q30 line? Yes. 
 ```
