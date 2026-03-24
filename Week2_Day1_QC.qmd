@@ -46,3 +46,20 @@ p_avg
 ggsave("average_quality.png", plot = p_avg)
 #Question: Is the median average quality of our library above the Q30 line? Yes. 
 ```
+
+### **2. Per Cycle Quality: The Diagnostic View**
+
+```{r}
+#| eval: false 
+rqcCycleQualityBoxPlot(qc_result)
+```
+
+### **Micro-Challenge 2: The Quality Threshold**
+
+```{r}
+#| eval: false 
+p_qual <- rqcCycleQualityBoxPlot(qc_result) +
+  geom_hline(yintercept = 30, color = "green", linetype = "dashed")
+p_qual
+ggsave("quality_boxplot.png", plot = p_qual)
+```
