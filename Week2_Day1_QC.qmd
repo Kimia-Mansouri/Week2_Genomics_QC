@@ -28,7 +28,7 @@ fastq_dir <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 qc_result <- rqc(path = fastq_dir, pattern = ".fastq.gz", openBrowser=FALSE)
 ```
 
-### **Average Read Quality: The Bird’s Eye View**
+### **1. Average Read Quality: The Bird’s Eye View**
 
 ```{r}
 #| eval: false 
@@ -36,7 +36,7 @@ qc_result <- rqc(path = fastq_dir, pattern = ".fastq.gz", openBrowser=FALSE)
 rqcReadQualityBoxPlot(qc_result) 
 ```
 
-### Micro_Challenge 1**: The Bird’s Eye Audit**
+#### Micro_Challenge 1**: The Bird’s Eye Audit**
 
 ```{r}
 #| eval: false 
@@ -54,12 +54,44 @@ ggsave("average_quality.png", plot = p_avg)
 rqcCycleQualityBoxPlot(qc_result)
 ```
 
-### **Micro-Challenge 2: The Quality Threshold**
+#### **Micro-Challenge 2: The Quality Threshold**
 
 ```{r}
 #| eval: false 
 p_qual <- rqcCycleQualityBoxPlot(qc_result) +
-  geom_hline(yintercept = 30, color = "green", linetype = "dashed")
+  geom_hline(yintercept = 30, color = "green", linetype = "dashed") +
+  geom_hline(yintercept = 20, color = "red", linetype = "dashed")
 p_qual
 ggsave("quality_boxplot.png", plot = p_qual)
+```
+
+### **3. Per Cycle Base Content: The “Randomness” Check**
+
+```{r}
+#| eval: false 
+rqcCycleBaseCallsLinePlot(qc_result)
+```
+
+#### **Micro-Challenge 3: The Base Composition Audit**
+
+```{r}
+#| eval: false 
+p_base<- rqcCycleBaseCallsLinePlot(qc_result)
+ggsave("base_content_plot.png", plot =p_base)
+# Do the lines stay parallel for the entire read, or do they “wiggle” at the beginning? They wiggle at the beginning
+```
+
+### **4. Read Frequency: The “Uniqueness” Check**
+
+```{r}
+#| eval: false 
+rqcReadFrequencyPlot(qc_result)
+```
+
+#### **Micro-Challenge 4: The Frequency Audit**
+
+```{r}
+#| eval: false 
+p_freq <-rqcReadFrequencyPlot(qc_result)
+ggsave("read_frequency.png", plot =p_freq)
 ```
