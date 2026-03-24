@@ -95,3 +95,31 @@ rqcReadFrequencyPlot(qc_result)
 p_freq <-rqcReadFrequencyPlot(qc_result)
 ggsave("read_frequency.png", plot =p_freq)
 ```
+
+### **5. Automated Reporting: The Full Audit**
+
+```{r}
+#| eval: false 
+#| # Setup knitr options for the report generation
+# This ensures that even in a non-interactive environment, 
+# the automated report renders successfully.
+knitr::opts_chunk$set(
+  eval = TRUE,
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
+
+# Generate the HTML report
+# By specifying an outdir, we tell Rqc exactly where to put the results
+dir.create("Rqc_Full_Report")
+reportFile <- rqcReport(qc_result, outdir = "Rqc_Full_Report")
+```
+
+#### **Micro-Challenge 5: The Portable Report**
+
+```{r}
+#| eval: false 
+```
+
+## **Step 2: The Industry Standard (FastQC & MultiQC)**
