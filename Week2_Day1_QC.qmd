@@ -140,3 +140,23 @@ mkdir -p fastqc_results
 # Replace [/Users/kmansoori00/Library/R/arm64/4.4/library/ShortRead/extdata/E-MTAB-1147] with the path you copied from R
 fastqc /Users/kmansoori00/Library/R/arm64/4.4/library/ShortRead/extdata/E-MTAB-1147/*.fastq.gz -o fastqc_results/
 ```
+
+### **3. Inspecting the Report**
+
+### **4. The “MultiQC” Logic: Aggregating Data in R**
+
+```{r}
+#| eval: false 
+# Load the aggregated data from the folder we just created
+qc_data <- qc_aggregate("fastqc_results")
+
+# View the summary of the statuses (Pass/Warn/Fail) for all modules
+class(qc_data)
+```
+
+#### **Micro-Challenge 6: The Aggregator**
+
+```{bash}
+#| eval: false
+
+```
