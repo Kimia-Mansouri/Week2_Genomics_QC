@@ -171,4 +171,9 @@ conda create -n sequali_env
 
 #Install Sequali in the environment (looking for two channels)
 conda install -c conda-forge -c bioconda sequali
+
+#Open Report and path to the file 
+sequali /Users/kmansoori00/Downloads/barcode02.unclassified.fq
 ```
+
+## **Step 3: Cleanup Strategy 1 (Relative)**
