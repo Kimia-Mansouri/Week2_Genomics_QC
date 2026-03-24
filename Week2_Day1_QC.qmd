@@ -154,9 +154,21 @@ qc_data <- qc_aggregate("fastqc_results")
 class(qc_data)
 ```
 
-#### **Micro-Challenge 6: The Aggregator**
+# **Long-Read QC & Hygiene (The “We Do”)**
+
+## **Step 1: Download the Data**
+
+## **Step 2: The Audit (Sequali)**
 
 ```{bash}
 #| eval: false
+#Look for sequali
+conda env list
 
+#Create environment 
+conda create -n sequali_env
+
+
+#Install Sequali in the environment (looking for two channels)
+conda install -c conda-forge -c bioconda sequali
 ```
