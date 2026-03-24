@@ -177,3 +177,33 @@ sequali /Users/kmansoori00/Downloads/barcode02.unclassified.fq
 ```
 
 ## **Step 3: Cleanup Strategy 1 (Relative)**
+
+```{bash}
+| eval: false
+#| label: b3
+
+# Create output directory
+mkdir -p data/clean_reads
+
+# Activate filtlong and apply this to filter the best data 
+filtlong --min_length 1100 --keep_percent 90 /Users/kmansoori00/Downloads/barcode02.unclassified.fq | gzip > data/clean_reads/ont_filtered.fastq.gz
+
+#Run sequali on the filtlong fltered data
+sequali data/clean_reads/ont_filtered.fastq.gz
+```
+
+## **Step 4: Cleanup Strategy 2 (Absolute Threshold)**
+
+```{bash}
+#| eval: false
+#| label: b4
+
+# Run filtlong with a Q7 threshold
+filtlong --min_length 1000 --min_mean_q 7 \
+  data/raw_reads/ont.reads.fastq.gz | gzip > data/clean_reads/ont_filtered2.fastq.gz
+  
+#  filtlong --min_length 1000 --min_mean_q 7 \
+# ./raw_reads/ont.reads.fastq.gz | gzip > ./clean_reads/ont_filtered2.fastq.gz
+```
+
+## **Step 5: The Final Verification & Comparison**
