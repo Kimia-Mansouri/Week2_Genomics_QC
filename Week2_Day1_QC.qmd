@@ -6,6 +6,8 @@ editor: visual
 toc: true
 ---
 
+# **Week 2, Day 1: The Gate to Omics & Data Hygiene**
+
 ```{r}
 #| eval: false 
 library("Rqc") 
@@ -116,10 +118,25 @@ dir.create("Rqc_Full_Report")
 reportFile <- rqcReport(qc_result, outdir = "Rqc_Full_Report")
 ```
 
-#### **Micro-Challenge 5: The Portable Report**
+## **Step 2: The Industry Standard (FastQC & MultiQC)**
 
-```{r}
-#| eval: false 
+### **1. Terminal Setup: Installing FastQC**
+
+```{bash}
+#| eval: false
+# Open your Terminal tab (next to the Console)
+# Install FastQC from the bioconda channel
+conda install -c bioconda fastqc -y
 ```
 
-## **Step 2: The Industry Standard (FastQC & MultiQC)**
+### **2. Running FastQC from the Command Line**
+
+```{bash}
+#| eval: false
+# 1. Create the output directory inside your project
+mkdir -p fastqc_results
+
+# 2. Run FastQC
+# Replace [/Users/kmansoori00/Library/R/arm64/4.4/library/ShortRead/extdata/E-MTAB-1147] with the path you copied from R
+fastqc /Users/kmansoori00/Library/R/arm64/4.4/library/ShortRead/extdata/E-MTAB-1147/*.fastq.gz -o fastqc_results/
+```
