@@ -1,0 +1,19 @@
+---
+title: "Week2_Day1_QC"
+author: "Kimia Mansoori"
+format: html
+editor: visual
+toc: true
+---
+
+```{r}
+#| eval: false 
+#| echo: false 
+library(Rqc) 
+library(fastqcr) 
+library(QuasR) 
+library(ShortRead) 
+library(ggplot2)
+library ("tidyverse")
+print("All Bioconductor packages loaded successfully!")
+```
